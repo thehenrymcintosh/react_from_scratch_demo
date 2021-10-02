@@ -1,7 +1,7 @@
 type ElementProps = Record<string, (string | EventListenerOrEventListenerObject)>
 type Content = (string | Node | null);
 
-export type Component<props> = (props) => Content;
+export type Component<Props> = (props: Props) => Content;
 
 export function elementCreator(tag: string) {
   return (props: ElementProps, content: Content | Content[]): Content => {

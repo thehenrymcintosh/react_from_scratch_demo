@@ -9,18 +9,32 @@ const button = elementCreator("button");
 export const Hero: Component<{}> = ({}) => {
   const [title, setTitle] = useState("Title");
 
-  useEffect(() => {
-    console.log("title changed");
-    return () => {console.log("cleanup")}
-  },[title]);
-
   return div({ class: "hero"}, [
-    h1({ class: "hero__title blue"}, title),
+    Heading({content: title}),
     h2({}, "Subtitle"),
-    button(
-      { "onClick": (e) => { setTitle(`${title}s`) } }, 
-      "Click me!"
+    Button({
+        onClick: () => { setTitle(`${title}s`) } , 
+        text: "Click me!"
+      }
     )
   ])
+}
+
+export const Heading: Component<{content: string}> = ({content}) => {
+  
+  useEffect(() => {
+    console.log("text changed");
+    return () => {console.log("cleanup")}
+  },[content]);
+
+  return h1({ class: "hero__title"}, content);
+}
+
+
+export const Button: Component<{onClick: () => void, text: string}> = ({onClick, text}) => {
+  return button(
+    { onClick }, 
+    text
+  )
 }
 

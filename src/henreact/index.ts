@@ -1,4 +1,5 @@
-import { render, useState, useEffect } from "./core";
+import {  useState, useEffect } from "./hooks";
+import { render } from "./core";
 import {elementCreator, Component} from "./element";
 
 export {
